@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "SFExpandingButton.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet SFExpandingButton *button;
+@property (strong, nonatomic) IBOutlet UILabel *textLabel;
 
 @end
 
@@ -18,7 +21,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.button setMainButtonImage:[UIImage imageNamed:@"menuButton.png"]];
+    [self.button addItem:[UIImage imageNamed:@"HomeButton.png"] withTarget:self action:@selector(homePressed:)];
+    [self.button addItem:[UIImage imageNamed:@"mapButton.png"] withTarget:self action:@selector(mapPressed:)];
 }
+
+- (void)mapPressed:(id)sender {
+    [self.textLabel setText:@"Map"];
+}
+
+- (void)homePressed:(id)sender {
+    [self.textLabel setText:@"Home"];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
